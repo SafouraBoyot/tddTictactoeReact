@@ -3,6 +3,7 @@ import {shallow} from 'enzyme'
 import {mount} from 'enzyme'
 
 import TicTacToe, {Square} from './TicTacToe'
+import {GameStatus} from "./TicTacToe";
 
 describe('tictactoe', () => {
     it('', () => {
@@ -39,3 +40,32 @@ describe('tictactoe', () => {
     })
 })
 
+describe('tictactoe', () => {
+    it('should announce winner when three symbol in row', () => {
+        const wrapper = mount(<TicTacToe/>)
+
+        const firstSquare = wrapper.find(Square).at(0)
+        firstSquare.find('button').simulate('click')
+        wrapper.update()
+
+        const secondSquare = wrapper.find(Square).at(5)
+        secondSquare.find('button').simulate('click')
+        wrapper.update()
+
+        const thirdSquare = wrapper.find(Square).at(1)
+        thirdSquare.find('button').simulate('click')
+        wrapper.update()
+
+        const forthSquare = wrapper.find(Square).at(6)
+        forthSquare.find('button').simulate('click')
+        wrapper.update()
+
+        const fifthSquare = wrapper.find(Square).at(2)
+        fifthSquare.find('button').simulate('click')
+        wrapper.update()
+
+        const gameStatus = wrapper.find(GameStatus);
+
+        expect(gameStatus.text()).toBe('Winner: X')
+    })
+})
