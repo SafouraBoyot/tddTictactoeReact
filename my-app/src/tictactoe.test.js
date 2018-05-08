@@ -39,17 +39,3 @@ describe('tictactoe', () => {
     })
 })
 
-describe('tictactoe', () => {
-    it('should announce winner when three symbol in row', () => {
-        const wrapper = mount(<TicTacToe/>)
-        const firstSquare = wrapper.find(Square).at(0)
-        firstSquare.find('button').simulate('click')
-        wrapper.update()
-
-        const secondSquare = wrapper.find(Square).at(1)
-        secondSquare.find('button').simulate('click')
-        wrapper.update()
-
-        expect(secondSquare.text()).toBe('O')
-    })
-})
